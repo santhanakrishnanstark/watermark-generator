@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate Watermark Images</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="loader">
+        <div class="lds-ellipsis">
+            <h6>Processing...</h6><div></div><div></div><div></div><div></div></div>
+    </div>
+    <main>
+        <div class="container-fluid text-center header-container">
+            <h1>Generate Watermark Images</h1>
+            <div class="main-container">
+                <div class="left-section">
+                    <form>
+                        <h2 class="mb-5">Create your watermark here</h2>
+                        <div class="mb-3">
+                          <label for="inputImages" class="form-label">Add your Images</label>
+                          <input type="file" class="form-control" id="inputImages" multiple>
+                          <span class="text-muted form-text">Add your images which you want to add watermark</span>
+                        </div>
+                        <div class="mb-3">
+                          <label for="watermarkInput" class="form-label">Add Watermark Image</label>
+                          <input type="file" class="form-control" id="watermarkInput">
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <button type="button" id="merge" class="btn btn-primary btn-lg mt-3">Merge</button>
+                            <button type="button" id="convert" class="btn btn-primary btn-lg mt-3">Convert as Image</button>
+                            <button type="button" id="download" class="btn btn-primary btn-lg mt-3">Download</button>
+                        </div>
+                      </form>
+                </div>
+                <div class="right-section">
+                    <h2>Preview</h2>
+                    <div id="previewContainer"></div>
+                    <h2 class="convert-label">Converted as Image</h2>
+                    <div id="previewImageContainer"></div>
+                </div>
+            </div>
+
+            <span class="quick-navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down-circle-fill down" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V4.5z"/>
+                  </svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle-fill up" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
+                  </svg>
+            </span>
+        </div>
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="js/html2canvas.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="js/fileSaver.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
