@@ -68,12 +68,11 @@ form .btn-primary:focus {
 }
 .watermark {
   position: absolute;
-  opacity: 0.5;
+  opacity: 0.2;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   height: 100%;
-  width: 100%;
 }
 .convert-label {
   display: none;
@@ -92,6 +91,14 @@ form .btn-primary:focus {
 }
 .quick-navigation svg:hover {
   fill: darkgrey;
+}
+.button-controls {
+  text-align: left;
+}
+#merge,
+#convert,
+#download {
+  display: none;
 }
 
 /* loader css */

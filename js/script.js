@@ -4,6 +4,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
     var previewContainer = document.querySelector('#previewContainer');
     var previewImageContainer = document.querySelector('#previewImageContainer');
 
+    var addBtn = document.querySelector('#add');
     var mergebtn = document.querySelector('#merge');
     var convertBtn = document.querySelector('#convert');
     var downloadBtn = document.querySelector('#download');
@@ -18,26 +19,35 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
     // jsZip Initialization
     var zip = new JSZip();
 
-    mergebtn.addEventListener('click', function() {
+    addBtn.addEventListener('click', function() {
         try {
             showLoader();
             var Imagefiles = Array.from(fileInput.files);
-            var watermarkImg = Array.from(watermark.files)[0];
             Imagefiles.forEach(file => {
                 renderImage(file);
             });
-            renderWatermarkImage(watermarkImg);
             showDownIcon();
+            mergebtn.style.display = 'inline-block';
         } catch(e) {
             alert(e);
         }
         hideLoader();
-    })
+    });
+
+    mergebtn.addEventListener('click', function() {
+        try {
+            var watermarkImg = Array.from(watermark.files)[0];
+            renderWatermarkImage(watermarkImg);
+            convertBtn.style.display = 'inline-block';
+        } catch (error) {
+            alert(error)
+        }
+    });
 
     convertBtn.addEventListener('click', function(){
         showLoader();
         convertToCanvas();
-    })
+    });
 
     downloadBtn.addEventListener('click', function() {
         showLoader();
@@ -121,8 +131,10 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
                 // show convet label
                 document.querySelector('.convert-label').style.display= 'block';
         
-                hideLoader();
             });
+            hideLoader();
+            downloadBtn.style.display = 'inline-block';
+
         }catch(e) {
             alert(e);
         }
