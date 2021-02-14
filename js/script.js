@@ -9,7 +9,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
     var convertBtn = document.querySelector('#convert');
     var downloadBtn = document.querySelector('#download');
 
-    var loader = document.querySelector('.loader');
+    // var loader = document.querySelector('.loader');
     // var upIcon = document.querySelector('.quick-navigation svg.up');
     // var downIcon = document.querySelector('.quick-navigation svg.down');
 
@@ -21,7 +21,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
 
     addBtn.addEventListener('click', function() {
         try {
-            showLoader();
+            // showLoader();
             var Imagefiles = Array.from(fileInput.files);
             Imagefiles.forEach(file => {
                 renderImage(file);
@@ -31,7 +31,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
         } catch(e) {
             alert(e);
         }
-        hideLoader();
+        // hideLoader();
     });
 
     mergebtn.addEventListener('click', function() {
@@ -45,12 +45,12 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
     });
 
     convertBtn.addEventListener('click', function(){
-        showLoader();
+        // showLoader();
         convertToCanvas();
     });
 
     downloadBtn.addEventListener('click', function() {
-        showLoader();
+        // showLoader();
         downloadAsZip();
     });
 
@@ -115,7 +115,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
         try {
             document.querySelectorAll('.image-preview').forEach(function(imageDiv) {
                 html2canvas(imageDiv, {
-                    allowTaint: true,
+                    allowTaint: false,
                     useCORS: true,
                     // letterRendering: 1,
                 })
@@ -132,7 +132,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
                 document.querySelector('.convert-label').style.display= 'block';
         
             });
-            hideLoader();
+            // hideLoader();
             downloadBtn.style.display = 'inline-block';
 
         }catch(e) {
@@ -149,7 +149,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
             zip.generateAsync({type:"blob"})
             .then(function(content) {
                 saveAs(content, "example.zip");
-                hideLoader();
+                // hideLoader();
             });
         }catch(e) {
             alert(e);
