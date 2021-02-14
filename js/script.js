@@ -10,8 +10,8 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
     var downloadBtn = document.querySelector('#download');
 
     var loader = document.querySelector('.loader');
-    var upIcon = document.querySelector('.quick-navigation svg.up');
-    var downIcon = document.querySelector('.quick-navigation svg.down');
+    // var upIcon = document.querySelector('.quick-navigation svg.up');
+    // var downIcon = document.querySelector('.quick-navigation svg.down');
 
     // for storing image data as base64 with image name as obj.
     var canvasImageData = [];
@@ -26,7 +26,7 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
             Imagefiles.forEach(file => {
                 renderImage(file);
             });
-            showDownIcon();
+            // showDownIcon();
             mergebtn.style.display = 'inline-block';
         } catch(e) {
             alert(e);
@@ -54,22 +54,22 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
         downloadAsZip();
     });
 
-    downIcon.addEventListener('click', function() {
-        window.scrollTo(0,document.body.scrollHeight);
-        hideDownIcon();
-        showUpIcon();
-    });
+    // downIcon.addEventListener('click', function() {
+    //     window.scrollTo(0,document.body.scrollHeight);
+    //     hideDownIcon();
+    //     showUpIcon();
+    // });
 
-    upIcon.addEventListener('click', function() {
-        window.scrollTo(0, 0);
-        // hideDownIcon();
-        hideUpIcon();
-        showDownIcon();
-    });
+    // upIcon.addEventListener('click', function() {
+    //     window.scrollTo(0, 0);
+    //     // hideDownIcon();
+    //     hideUpIcon();
+    //     showDownIcon();
+    // });
 
     window.addEventListener('scroll', function() {
         if(window.scrollY > 100) {
-            showUpIcon();
+            // showUpIcon();
         }
     })
 
@@ -115,9 +115,9 @@ if (window.File && window.FileReader && window.FileList && window.Blob) {
         try {
             document.querySelectorAll('.image-preview').forEach(function(imageDiv) {
                 html2canvas(imageDiv, {
-                    allowTaint: false,
+                    allowTaint: true,
                     useCORS: true,
-                    letterRendering: 1,
+                    // letterRendering: 1,
                 })
                 .then(function(canvas) {
                     previewImageContainer.appendChild(canvas);
